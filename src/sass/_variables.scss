@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;1,100;1,200;1,400;1,500;1,600&display=swap');
+
+:root {
+  /* Fonts */
+
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  /* Colors */
+  --Dark-gray: rgb(19,21,24);
+  --Dark-gray-muted: rgba(19, 21, 24, 0.5);
+  --Ligth-gray: rgb(23, 27, 32);
+  --Ligth-gray-muted: rgba(23, 27, 32, 0.5);
+  --White-primary: rgb(242, 242, 242);
+
+  --Note: rgb(255, 255, 5);
+  --Info: rgb(60, 103, 233);
+  --Urgent: rgb(232,62,63);
+  --ToDo: rgb(252, 167, 10);
+  --Recipe: rgb(24, 255, 25);
+  --Meeting: rgb(167, 6, 199);
+  --List: rgb(0, 255, 136);
+}

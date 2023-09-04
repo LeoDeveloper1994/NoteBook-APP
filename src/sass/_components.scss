@@ -1,0 +1,51 @@
+@use "./mixins" as mix;
+
+.login-user-container {
+  width: 320px;
+  height: 600px;
+  padding: 1rem;
+  background-color: var(--Ligth-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+
+  h3 {
+    color: var(--Urgent);
+  }
+
+  .name-input-container {
+    position: relative;
+    @include mix.inputs
+  }
+
+  .email-input-container {
+    position: relative;
+    @include mix.inputs
+  }
+
+  .password-input-container {
+    position: relative;
+    @include mix.inputs;
+  }
+
+  button {
+    @include mix.buttons(var(--Urgent));
+  }
+
+  p {
+    text-align: center;
+    color: var(--White-primary);
+    font-size: 0.8rem;
+
+    span {
+      color: var(--Urgent);
+      cursor: pointer;
+      padding-left: 6px;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
