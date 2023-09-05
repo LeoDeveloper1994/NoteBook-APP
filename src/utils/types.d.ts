@@ -1,0 +1,1 @@
+export type ThunkApp = ThunkAction<void, RootState, unknown, AnyAction>;

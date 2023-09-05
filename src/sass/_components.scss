@@ -1,4 +1,4 @@
-@use "./mixins" as mix;
+@use './mixins' as mix;
 
 .login-user-container {
   width: 320px;
@@ -16,12 +16,12 @@
 
   .name-input-container {
     position: relative;
-    @include mix.inputs
+    @include mix.inputs;
   }
 
   .email-input-container {
     position: relative;
-    @include mix.inputs
+    @include mix.inputs;
   }
 
   .password-input-container {

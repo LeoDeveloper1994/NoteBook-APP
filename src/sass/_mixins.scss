@@ -25,12 +25,15 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    transition: transform 500ms, color 300ms;
+    transition:
+      transform 500ms,
+      color 300ms;
     padding: 0 0.7rem;
     cursor: text;
   }
 
-  input:focus + label, input:not(:placeholder-shown) + label {
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
     transform: translateY(-175%) scale(0.7);
     transform-origin: top left;
     background-color: var(--Ligth-gray);
@@ -38,7 +41,7 @@
   }
 }
 
-@mixin buttons($bg-color: var(--Urgent)){
+@mixin buttons($bg-color: var(--Urgent)) {
   width: 160px;
   height: 35px;
   background-color: $bg-color;
@@ -53,4 +56,4 @@
   &:hover {
     opacity: 0.9;
   }
-};
+}
