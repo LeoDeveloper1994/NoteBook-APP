@@ -1,56 +1,42 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserThunk } from '../../store/slices/userSession.slice';
+import { useCreateUser } from '../../hooks/useUser';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../hooks/useRedux';
+import { setEmail } from '../../store/slices/userEmail.slice';
 
 const CreateUserForm = () => {
+  const { mutate } = useCreateUser();
+
   const dispatch = useAppDispatch();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const { handleSubmit, reset, register } = useForm();
 
   const navigate = useNavigate();
 
-  const reset = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-  };
-
-  const submit = (e: React.FormEvent<HTMLFormElement>): void => {
-    const body = {
-      user_name: name,
-      email,
-      password,
-    };
-
-    e.preventDefault();
-    dispatch(createUserThunk(body));
-    reset();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/dashboard');
-      console.log(isLoading);
-    }, 3000);
+  const submit = (data: SubmitHandler<FieldValues> | FieldValues): void => {
+    mutate(data, {
+      onSuccess: (res) => {
+        const { email } = res.data.data.newUser;
+        dispatch(setEmail(email));
+        reset();
+        navigate('/login');
+      },
+    });
   };
 
   return (
     <div>
-      <form className="login-user-container" onSubmit={submit}>
+      <form className="login-user-container" onSubmit={handleSubmit(submit)}>
         <h3>Register:</h3>
         <div className="name-input-container">
           <input
             type="text"
-            id="username"
+            id="user_name"
             required
             placeholder=" "
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            {...register('user_name')}
           />
-          <label htmlFor="username">Type your name</label>
+          <label htmlFor="user_name">Type your name</label>
         </div>
         <div className="email-input-container">
           <input
@@ -58,8 +44,7 @@ const CreateUserForm = () => {
             id="email"
             required
             placeholder=" "
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email')}
           />
           <label htmlFor="email">Type your email</label>
         </div>
@@ -69,8 +54,7 @@ const CreateUserForm = () => {
             id="password"
             required
             placeholder=" "
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register('password')}
           />
           <label htmlFor="password">Type your password</label>
         </div>

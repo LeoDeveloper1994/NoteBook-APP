@@ -1,10 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userSessionSlice from './slices/userSession.slice';
-// ...
+import { configureStore } from '@reduxjs/toolkit';// ...
+import userEmailSlice from './slices/userEmail.slice';
 
 export const store = configureStore({
   reducer: {
-    userSession: userSessionSlice,
+    userEmail: userEmailSlice,
   },
 });
 

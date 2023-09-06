@@ -5,6 +5,9 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 
 import './sass/app.scss';
+import { axiosInterceptor } from './utils/apiClient';
+
+axiosInterceptor();
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(

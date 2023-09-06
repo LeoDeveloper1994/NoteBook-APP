@@ -27,6 +27,14 @@
   .password-input-container {
     position: relative;
     @include mix.inputs;
+
+    i {
+      transform: scale(85%);
+      color: var(--Urgent);
+      position: absolute;
+      right: 13px;
+      bottom: 17px;
+    }
   }
 
   button {
